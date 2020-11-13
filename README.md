@@ -13,4 +13,4 @@
 	*  try ing to use list of objects to keep count of which tree nodes were traversed to get here
 	*  'rootlist(index).left' does not actually call the part object indexed in the list?
 	*  Maybe i should try assigning a new variable to the node in the list first
-## tree node named rooted is tested with itse various member functions
+* tree node named rooted is tested with itse various member functions
