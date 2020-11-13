@@ -25,8 +25,35 @@ class TreeNode(object):
             res.append(root.val)
             res = res + self.inorderTraversal(root.right)
         return res
-
-
+    def levelorderTraversal(self,root)-> object:
+        print("Level order list:")
+        print([root.val])
+        rootlist=[root.right,root.left]
+        while rootlist:
+            newrootlist=[]
+            levellist = []
+            for x in rootlist:
+                if x:
+                    newrootlist=newrootlist+[x.left,x.right]
+                    levellist=levellist + [x.val]
+            print(levellist)
+            rootlist = newrootlist
+    def inorderiterative(self,root)-> object:
+        print("Inorder traversal, iterative approach")
+        rootlist=[root]
+        i = 1
+        while rootlist:
+            if rootlist(i).left:
+                rootlist = rootlist + rootlist(i).left
+                i = i + 1
+                continue
+            print(rootlist(i).val)
+            if rootlist(i).right:
+                rootlist = rootlist + rootlist(i).right
+                i = i + 1
+                continue
+            rootlist.pop(i)
+            i = i - 1
 
 rooted = TreeNode(1)
 rooted.left = TreeNode(4)
@@ -35,6 +62,8 @@ rooted.right.right = TreeNode(3)
 print(rooted.preorderTraversal(rooted))
 print(rooted.postorderTraversal(rooted))
 print(rooted.inorderTraversal(rooted))
+rooted.levelorderTraversal(rooted)
+rooted.inorderiterative(rooted)
 #for x in outputlist:
 #    print(x)
 
