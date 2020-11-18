@@ -28,32 +28,53 @@ class TreeNode(object):
     def levelorderTraversal(self,root)-> object:
         print("Level order list:")
         print([root.val])
-        rootlist=[root.right,root.left]
+        rootlist = [root.left, root.right]
         while rootlist:
-            newrootlist=[]
+            newrootlist = []
             levellist = []
             for x in rootlist:
                 if x:
-                    newrootlist=newrootlist+[x.left,x.right]
-                    levellist=levellist + [x.val]
+                    newrootlist = newrootlist + [x.left, x.right]
+                    levellist = levellist + [x.val]
             print(levellist)
             rootlist = newrootlist
-    def inorderiterative(self,root)-> object:
+
+    def inorderiterative(self,root) -> object:
         print("Inorder traversal, iterative approach")
-        rootlist=[root]
-        i = 1
+        rootlist = Stack([root])
         while rootlist:
-            if rootlist(i).left:
-                rootlist = rootlist + rootlist(i).left
-                i = i + 1
+            x = rootlist.read()
+            left=x.left
+            if left:
+                rootlist.stack(left)
                 continue
-            print(rootlist(i).val)
-            if rootlist(i).right:
-                rootlist = rootlist + rootlist(i).right
-                i = i + 1
+            print(rootlist.offload())
+            right=x.right
+            if right:
+                rootlist.stack(right)
                 continue
-            rootlist.pop(i)
-            i = i - 1
+class Stack(object):
+    def __init__(self,x=[]):
+        self.list=x
+    def stack(self,new):
+        self.list.insert(0,new)
+    def offload(self):
+        top=self.list.pop(0)
+        return top
+    def read(self):
+        x = self.list[0]
+        return x
+class Queue(object):
+    def __init__(self, x=[]):
+        self.list = x
+    def queueup(self,new):
+        self.list = self.list.insert(len(self.list)-1, new)
+    def offload(self):
+        nextup = self.list.pop(0)
+        return nextup
+    def read(self):
+        x=self.list[0]
+        return x
 
 rooted = TreeNode(1)
 rooted.left = TreeNode(4)
